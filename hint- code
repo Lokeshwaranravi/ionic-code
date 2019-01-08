@@ -1,6 +1,7 @@
 ionic popover controller:-
-ionic segment-buttons:-
-
+ionic segment-buttons:-                                           manual-**declare this popovercomponent**
+                        
+                        <--html code-->
 <ion-header>
   <ion-navbar>
     <ion-title>
@@ -115,4 +116,76 @@ style="float:right; display:inline;"></ion-icon>
         </ion-item>
       </ion-list>
     </div>
+    
+    <--Css code-->
+    
+    page-home {
+    background-color: rgb(214, 211, 211);
+    
+}
+.segment-button {
+    color: purple !important;
+    text-transform: none !important;
+    font-size: 1.6rem !important;
+    font-weight: 600 !important;
+    opacity: 1 !important;
+    border: 0 !important;
+    
+
+    &.activated, &.segment-activated {
+      border-top: 0;
+      border-right: 0;
+      border-bottom: 2px solid purple !important;
+      border-left: 0;
+      color: purple !important;
+      background: transparent !important;
+    }
+  }
+  
+  <--ts code-->   **declare this popovercomponent**
+  
+  import { Component } from '@angular/core';
+import { NavController, PopoverController } from 'ionic-angular';
+import { PopoverComponent } from '../../components/popover/popover';
+
+
+
+@Component({
+  selector: 'page-home',
+  templateUrl: 'home.html'
+})
+export class HomePage {
+  pet: string ="puppies";
+
+
+
+// new: string ="option";
+// constructor() {      
+//   this.pet = "puppies";
+
+constructor(public navCtrl: NavController,
+  public popoverCtrl: PopoverController) {
+
+}
+
+presentPopover(myEvent) {
+  let popover = this.popoverCtrl.create(PopoverComponent);
+  popover.present({
+    ev: myEvent
+  });
+}
+
+
+// openday(){
+//   this.navCtrl.push(DayPage)
+// }
+
+
+// }
+}
+
+
+
+  
+
     
